@@ -34,4 +34,4 @@ jobs:
       env:
         ACTIONS_DEPLOY_KEY: ${{secrets.cc}}
         PUBLISH_BRANCH: master
-        PUBLISH_DIR: ./
+        PUBLISH_DIR: dist
