@@ -16,9 +16,6 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [8.x, 10.x, 12.x]
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -26,15 +23,15 @@ jobs:
       uses: actions/checkout@v2
       with: 
        persist-credentials: false
-    - name: use Node.js 12
-      uses: actions/setup-node@v1
-      with: 
-           ${{ matrix.node-version }}
     - name: npm install
       run: npm install
     - name: npm build
       run: npm run build
       env:
         CI: true
-
-  
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v2.5.0
+      env:
+        ACTIONS_DEPLOY_KEY: ${{secrets.key}}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./
