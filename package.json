@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "parcel src/index.html --out-dir dist/debug --no-cache",
-    "build": "parcel build src/index.html --public-url / --out-dir dist/release"
+    "build": "parcel build src/index.html --out-dir ./"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4"
